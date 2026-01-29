@@ -84,6 +84,14 @@
             padding: 100px 10%;
         }
 
+        /* --- STATS SECTION --- */
+        .data-pulse-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 10% 80px;
+        }
+
         .stats-grid {
             background: rgba(124, 58, 237, 0.05);
             border: 1px solid var(--border);
@@ -93,6 +101,8 @@
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 40px;
             text-align: center;
+            width: 100%;
+            max-width: 1100px;
         }
 
         .stat-item h3 {
@@ -107,6 +117,11 @@
             font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 1.5px;
+        }
+
+        /* --- STRATEGY GRID --- */
+        .section-header {
+            margin-bottom: 60px;
         }
 
         .pillar-grid {
@@ -197,23 +212,23 @@
         </div>
     </header>
 
-    <section class="section-container" style="padding-top: 0; padding-bottom: 60px;">
+    <section class="data-pulse-container">
         <div class="stats-grid">
             <div class="stat-item">
-                <h3>1,402</h3>
-                <p>Casualties in 2022</p>
+                <h3 class="counter" data-target="1390">0</h3>
+                <p>Casualties in 2024</p>
             </div>
             <div class="stat-item">
-                <h3 style="color: var(--electric-purple);">+190%</h3>
-                <p>Increase since 2020</p>
+                <h3 style="color: var(--electric-purple);" class="counter" data-target="1312">0</h3>
+                <p>Total Collisions</p>
             </div>
             <div class="stat-item">
-                <h3>12</h3>
-                <p>Fatalities Recorded</p>
+                <h3 class="counter" data-target="444">0</h3>
+                <p>Serious Injuries</p>
             </div>
             <div style="grid-column: 1 / -1; margin-top: 20px; border-top: 1px solid var(--border); padding-top: 30px;">
                 <p style="font-size: 0.8rem; color: var(--text-dim);">
-                    Data sourced from the Reported Road Casualties Great Britain Safety Factsheet.
+                    Data sourced from the <a href="https://www.gov.uk/government/statistics/reported-road-casualties-great-britain-e-scooter-factsheet-2024" target="_blank" style="color: var(--primary-violet); text-decoration: none;">Reported Road Casualties Great Britain: E-Scooter Factsheet 2024</a>.
                 </p>
             </div>
         </div>
@@ -272,5 +287,24 @@
         <p style="margin-top: 10px; opacity: 0.5;">&copy; 2026 SafeRide Strategy • Faster. Greener. Safer.</p>
     </footer>
 
-</body>
-</html>
+    <script>
+        const counters = document.querySelectorAll('.counter');
+        const speed = 150; // The lower the slower
+
+        const startCounting = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const updateCount = () => {
+                        const target = +counter.getAttribute('data-target');
+                        const count = +counter.innerText;
+                        const inc = target / speed;
+
+                        if (count < target) {
+                            counter.innerText = Math.ceil(count + inc);
+                            setTimeout(updateCount, 20);
+                        } else {
+                            counter.innerText = target;
+                        }
+                    };
+                    updateCount();
