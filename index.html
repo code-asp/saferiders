@@ -84,46 +84,77 @@
             padding: 100px 10%;
         }
 
-        /* --- STATS SECTION (REVISED 2024 DATA) --- */
-        .data-pulse-container {
+        /* --- CENTERED DATA ANALYTICS --- */
+        .data-visual-wrap {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            padding: 0 10% 80px;
+            justify-content: center;
+            text-align: center;
+            padding-bottom: 100px;
         }
 
-        .stats-grid {
+        .stats-card {
             background: rgba(124, 58, 237, 0.05);
             border: 1px solid var(--border);
             border-radius: 40px;
             padding: 60px;
+            width: 100%;
+            max-width: 1000px;
+            backdrop-filter: blur(10px);
+        }
+
+        .analytics-title {
+            font-size: 0.9rem;
+            font-weight: 800;
+            color: var(--electric-purple);
+            letter-spacing: 3px;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+        }
+
+        .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 40px;
-            text-align: center;
-            width: 100%;
-            max-width: 1100px;
+            margin-bottom: 40px;
         }
 
         .stat-item h3 {
             font-size: 3.5rem;
             color: #ffffff;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             font-weight: 800;
         }
 
         .stat-item p {
             color: var(--text-dim);
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
         }
 
-        /* --- STRATEGY GRID --- */
-        .section-header {
-            margin-bottom: 60px;
+        .insight-banner {
+            border-top: 1px solid var(--border);
+            padding-top: 40px;
+            margin-top: 20px;
         }
 
+        .meaningful-quote {
+            font-size: 1.4rem;
+            font-weight: 300;
+            color: #ffffff;
+            max-width: 600px;
+            margin: 0 auto 15px;
+            line-height: 1.4;
+        }
+
+        .highlight-red {
+            color: #ff4757;
+            font-weight: 800;
+        }
+
+        /* --- STRATEGY PILLARS --- */
         .pillar-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -157,34 +188,6 @@
             margin-bottom: 24px;
         }
 
-        .bullet-list {
-            list-style: none;
-            margin-top: 1.5rem;
-        }
-
-        .bullet-list li {
-            margin-bottom: 10px;
-            color: var(--text-dim);
-            font-size: 0.95rem;
-            display: flex;
-            align-items: center;
-        }
-
-        .bullet-list li::before {
-            content: "→";
-            color: var(--electric-purple);
-            margin-right: 12px;
-            font-weight: bold;
-        }
-
-        .cta-banner {
-            background: linear-gradient(90deg, #1e1b4b 0%, #4c1d95 100%);
-            padding: 80px 10%;
-            border-radius: 40px;
-            margin: 40px 10% 100px;
-            text-align: center;
-        }
-
         footer {
             padding: 60px;
             text-align: center;
@@ -194,8 +197,8 @@
         }
 
         @media (max-width: 768px) {
-            .section-container { padding: 80px 5%; }
-            .stats-grid { padding: 40px 20px; }
+            .section-container { padding: 60px 5%; }
+            .stats-card { padding: 40px 20px; }
         }
     </style>
 </head>
@@ -212,88 +215,76 @@
         </div>
     </header>
 
-    <section class="data-pulse-container">
-        <div class="stats-grid">
-            <div class="stat-item">
-                <h3 class="counter" data-target="1390">0</h3>
-                <p>Total Casualties (2024)</p>
+    <section class="data-visual-wrap">
+        <div class="stats-card">
+            <div class="analytics-title">Reality Check: 2024 Dataset</div>
+            
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3 class="counter" data-target="1390">0</h3>
+                    <p>Total Casualties</p>
+                </div>
+                <div class="stat-item">
+                    <h3 style="color: var(--electric-purple);" class="counter" data-target="1312">0</h3>
+                    <p>Reported Collisions</p>
+                </div>
+                <div class="stat-item">
+                    <h3 class="counter" data-target="444">0</h3>
+                    <p>Serious Injuries</p>
+                </div>
             </div>
-            <div class="stat-item">
-                <h3 style="color: var(--electric-purple);" class="counter" data-target="1312">0</h3>
-                <p>Reported Collisions</p>
-            </div>
-            <div class="stat-item">
-                <h3 class="counter" data-target="444">0</h3>
-                <p>Serious Injuries</p>
-            </div>
-            <div style="grid-column: 1 / -1; margin-top: 20px; border-top: 1px solid var(--border); padding-top: 30px;">
-                <p style="font-size: 0.8rem; color: var(--text-dim);">
-                    Source: <a href="https://www.gov.uk/government/statistics/reported-road-casualties-great-britain-e-scooter-factsheet-2024" target="_blank" style="color: var(--primary-violet); text-decoration: none;">Reported Road Casualties Great Britain: E-Scooter Factsheet 2024</a>.
+
+            <div class="insight-banner">
+                <p class="meaningful-quote">
+                    Behind every statistic is a person. <br>
+                    In urban safety, <span class="highlight-red">"One is too many."</span>
+                </p>
+                <p style="font-size: 0.8rem; color: var(--text-dim); max-width: 500px; margin: 0 auto;">
+                    While fatalities remain low, the rising plateau of serious injuries among pedestrians and riders demands immediate behavioral intervention.
+                </p>
+                <p style="margin-top: 25px; font-size: 0.7rem; opacity: 0.4;">
+                    Source: Gov.uk Reported Road Casualties Great Britain Factsheet 2024
                 </p>
             </div>
         </div>
     </section>
 
     <section id="strategy" class="section-container">
-        <div class="section-header">
-            <h2 style="font-size: 3rem; margin-bottom: 10px;">The Strategy</h2>
-            <p style="color: var(--text-dim); font-size: 1.1rem; max-width: 600px;">Our framework addresses the urban safety crisis through practical, tech-driven behavioral change.</p>
+        <div class="section-header" style="text-align: center; margin-bottom: 80px;">
+            <h2 style="font-size: 3rem; margin-bottom: 10px;">The Three-Pillar Response</h2>
+            <p style="color: var(--text-dim); font-size: 1.1rem; max-width: 600px; margin: 0 auto;">Practical, immediate, and lasting behavioral change to bridge the gap between mobility and safety.</p>
         </div>
 
         <div class="pillar-grid">
             <div class="glass-card">
                 <div class="card-icon"><i class="fas fa-brain"></i></div>
                 <h3>Smart Education</h3>
-                <p>Engagement-first onboarding ensures riders understand legal frameworks and safe operation before the motor starts.</p>
-                <ul class="bullet-list">
-                    <li>Mandatory safety walkthroughs</li>
-                    <li>Contextual smart notifications</li>
-                    <li>Visual rule reinforcement</li>
-                </ul>
+                <p>Engagement-first onboarding ensures safety is top-of-mind before the motor starts.</p>
             </div>
 
             <div class="glass-card">
                 <div class="card-icon"><i class="fas fa-rocket"></i></div>
                 <h3>In-App Nudges</h3>
-                <p>Leveraging behavioral science to reward responsible riding and eliminate common misuse patterns.</p>
-                <ul class="bullet-list">
-                    <li>Photo-verified parking zones</li>
-                    <li>Performance ride credits</li>
-                    <li>Misuse restriction triggers</li>
-                </ul>
+                <p>Leveraging behavioral science to reward responsible riding while making rule-breaking harder to ignore.</p>
             </div>
 
             <div class="glass-card">
                 <div class="card-icon"><i class="fas fa-users"></i></div>
                 <h3>Campus Synergy</h3>
-                <p>Building a culture of safety within trial areas through localized pilot programs and peer-to-peer influence.</p>
-                <ul class="bullet-list">
-                    <li>Student Ambassador programs</li>
-                    <li>On-campus safety challenges</li>
-                    <li>Collaborative local outreach</li>
-                </ul>
+                <p>Utilizing universities as ideal testing grounds for a culture of safety through peer influence.</p>
             </div>
         </div>
     </section>
 
-    <section class="cta-banner">
-        <h2 style="font-size: 2.5rem; margin-bottom: 15px;">Ready to Pilot?</h2>
-        <p style="opacity: 0.8; max-width: 600px; margin: 0 auto;">We focus on immediate, practical actions that scooter companies and campuses can implement today.</p>
-        <a href="mailto:escooter@safety.co.uk" style="background: white; color: black; padding: 15px 40px; border-radius: 12px; text-decoration: none; font-weight: 700; display: inline-block; margin-top: 30px;">Collaborate With Us</a>
-    </section>
-
     <footer>
-        <p>"Treat every ride as if the people around you were your friends and family".</p>
-        <p style="margin-top: 10px; opacity: 0.5;">&copy; 2026 SafeRide Strategy • Faster. Greener. Safer.</p>
+        <p style="font-style: italic; margin-bottom: 15px;">"Treat every ride as if the people around you were your friends and family".</p>
+        <p style="opacity: 0.5;">&copy; 2026 SafeRide Strategy • Faster. Greener. Safer.</p>
     </footer>
 
     <script>
-        /**
-         * Countdown Animation Logic
-         * Triggers when the stat grid enters the viewport.
-         */
+        // Count-up animation logic
         const counters = document.querySelectorAll('.counter');
-        const duration = 2500; // Total count-up time
+        const duration = 2500;
 
         const startCounting = (entries, observer) => {
             entries.forEach(entry => {
@@ -306,10 +297,11 @@
                         const elapsed = currentTime - startTime;
                         const progress = Math.min(elapsed / duration, 1);
                         
-                        // EaseOutQuad function for a smooth finish
-                        const easeOutQuad = t => t * (2 - t);
-                        const currentCount = Math.floor(easeOutQuad(progress) * target);
+                        // easeOutQuad
+                        const t = progress;
+                        const easedProgress = t * (2 - t);
                         
+                        const currentCount = Math.floor(easedProgress * target);
                         counter.innerText = currentCount.toLocaleString();
 
                         if (progress < 1) {
