@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SafeRide | The Three-Pillar Strategy</title>
+    <title>SafeRide | A Three-Pillar Urban Strategy</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
 
         :root {
-            --bg-dark: #0a0118;
-            --accent-purple: #8b5cf6;
-            --soft-purple: #c4b5fd;
+            --bg-deep: #05010d;
+            --primary-violet: #7c3aed;
+            --electric-purple: #a855f7;
             --glass: rgba(255, 255, 255, 0.03);
-            --border: rgba(255, 255, 255, 0.1);
+            --border: rgba(255, 255, 255, 0.08);
+            --text-dim: #94a3b8;
         }
 
         * {
@@ -24,172 +25,246 @@
         }
 
         body {
-            background-color: var(--bg-dark);
-            color: white;
+            background-color: var(--bg-deep);
+            color: #ffffff;
             line-height: 1.6;
             overflow-x: hidden;
         }
 
-        /* --- BACKGROUND ORBS --- */
-        .orb {
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
+        /* --- AESTHETIC GRADIENT BACKGROUNDS --- */
+        .bg-glow {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(124, 58, 237, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(168, 85, 247, 0.1) 0%, transparent 40%);
             z-index: -1;
-            filter: blur(60px);
         }
 
-        /* --- HERO --- */
-        .hero {
+        /* --- HERO SECTION --- */
+        header {
             height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 0 15%;
-            background: radial-gradient(circle at center, rgba(139, 92, 246, 0.05) 0%, transparent 100%);
+            padding: 0 20px;
         }
 
-        .badge {
-            background: rgba(139, 92, 246, 0.1);
-            color: var(--soft-purple);
-            padding: 8px 16px;
+        .status-badge {
+            background: rgba(124, 58, 237, 0.15);
+            border: 1px solid var(--primary-violet);
+            color: #d8b4fe;
+            padding: 6px 16px;
             border-radius: 100px;
             font-size: 0.8rem;
-            font-weight: 700;
-            border: 1px solid var(--accent-purple);
-            margin-bottom: 24px;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            letter-spacing: 1px;
         }
 
         h1 {
-            font-size: clamp(3rem, 7vw, 5.5rem);
+            font-size: clamp(2.5rem, 8vw, 5rem);
             font-weight: 800;
             line-height: 1.1;
-            margin-bottom: 24px;
-            background: linear-gradient(180deg, #fff 0%, rgba(255,255,255,0.4) 100%);
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to bottom, #ffffff 40%, #a855f7 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .hero p {
+        .hero-subtext {
+            max-width: 700px;
             font-size: 1.25rem;
-            color: #94a3b8;
-            max-width: 650px;
-            margin-bottom: 40px;
+            color: var(--text-dim);
+            margin-bottom: 3rem;
         }
 
-        .cta {
-            background: var(--accent-purple);
-            color: white;
-            padding: 18px 40px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 700;
-            transition: all 0.3s;
-            box-shadow: 0 10px 30px -10px var(--accent-purple);
-        }
-
-        .cta:hover { transform: translateY(-3px); box-shadow: 0 20px 40px -10px var(--accent-purple); }
-
-        /* --- STRATEGY --- */
-        .strategy {
+        /* --- THE STRATEGY GRID --- */
+        .section-container {
             padding: 120px 10%;
         }
 
-        .grid {
+        .section-header {
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .pillar-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 24px;
         }
 
         .glass-card {
             background: var(--glass);
             border: 1px solid var(--border);
-            padding: 48px;
             border-radius: 32px;
+            padding: 48px;
             backdrop-filter: blur(12px);
-            transition: border 0.3s;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .glass-card:hover { border: 1px solid var(--accent-purple); }
+        .glass-card:hover {
+            border-color: var(--primary-violet);
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.05);
+        }
 
-        .glass-card i {
-            background: linear-gradient(135deg, var(--accent-purple), #d946ef);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-size: 2.5rem;
+        .card-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--primary-violet), var(--electric-purple));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
             margin-bottom: 24px;
-            display: block;
+            box-shadow: 0 8px 20px rgba(124, 58, 237, 0.3);
         }
 
-        .glass-card h3 { font-size: 1.75rem; margin-bottom: 16px; }
-        .glass-card p { color: #94a3b8; }
-
-        /* --- STATS --- */
-        .stats {
-            text-align: center;
-            padding: 100px 10%;
-            background: rgba(255,255,255,0.02);
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
+        .glass-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
         }
 
-        /* --- FOOTER --- */
-        footer {
+        .glass-card p {
+            color: var(--text-dim);
+            margin-bottom: 1.5rem;
+        }
+
+        .bullet-list {
+            list-style: none;
+            color: #e2e8f0;
+            font-size: 0.95rem;
+        }
+
+        .bullet-list li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .bullet-list li::before {
+            content: "→";
+            color: var(--electric-purple);
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        /* --- BOTTOM CALL TO ACTION --- */
+        .cta-banner {
+            background: linear-gradient(90deg, #1e1b4b 0%, #4c1d95 100%);
             padding: 80px 10%;
+            border-radius: 40px;
+            margin: 40px 10% 100px;
             text-align: center;
+        }
+
+        .cta-btn {
+            background: #ffffff;
+            color: var(--bg-deep);
+            padding: 16px 40px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            margin-top: 2rem;
+            transition: 0.3s;
+        }
+
+        .cta-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+        }
+
+        footer {
+            padding: 40px;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            font-size: 0.8rem;
+            color: var(--text-dim);
         }
 
         @media (max-width: 768px) {
-            .hero { padding: 0 5%; }
-            h1 { font-size: 2.5rem; }
+            .section-container { padding: 80px 5%; }
+            h1 { font-size: 3rem; }
         }
     </style>
 </head>
 <body>
 
-    <div class="orb" style="top: -100px; left: -100px;"></div>
-    <div class="orb" style="bottom: 20%; right: -100px;"></div>
+    <div class="bg-glow"></div>
 
-    <section class="hero">
-        <div class="badge">VISION 2026</div>
-        <h1>Safer Streets.<br>Faster Cities.</h1>
-        <p>Transforming urban micromobility from a risk to responsible transportation.</p>
-        <a href="#explore" class="cta">The Strategy</a>
-    </section>
+    <header>
+        <div class="status-badge">MICRO-MOBILITY REVOLUTION</div>
+        <h1>Urban Safety.<br>Elevated.</h1>
+        <p class="hero-subtext">Moving from risk to responsibility with a three-pillar strategy designed for campuses, cities, and scooter operators.</p>
+        <div style="display: flex; gap: 15px;">
+            <a href="#strategy" style="color: white; text-decoration: none; font-weight: 600; border-bottom: 2px solid var(--primary-violet);">View Solution</a>
+        </div>
+    </header>
 
-    <section id="explore" class="strategy">
-        <div class="grid">
+    <section id="strategy" class="section-container">
+        <div class="section-header">
+            <h2>The Strategy</h2>
+            <p style="color: var(--text-dim);">Practical, immediate, and lasting behavioral change.</p>
+        </div>
+
+        <div class="pillar-grid">
             <div class="glass-card">
-                <i class="fa-solid fa-graduation-cap"></i>
+                <div class="card-icon"><i class="fas fa-brain"></i></div>
                 <h3>Smart Education</h3>
-                <p>Engagement over rules. Interactive walkthroughs ensure riders understand the landscape before the first ride.</p>
+                <p>Engagement over boring rules. Our interactive onboarding ensures safety is top-of-mind before the motor even starts.</p>
+                <ul class="bullet-list">
+                    <li>Mandatory engagement walkthroughs</li>
+                    <li>Contextual safety pop-ups</li>
+                    <li>Visual rule reinforcement</li>
+                </ul>
             </div>
 
             <div class="glass-card">
-                <i class="fa-solid fa-rocket"></i>
+                <div class="card-icon"><i class="fas fa-rocket"></i></div>
                 <h3>In-App Nudges</h3>
-                <p>Gamified accountability. Rewards for photo-verified parking and responsible behavior credits.</p>
+                <p>Leveraging behavioral science to reward responsible riding while making rule-breaking harder to ignore.</p>
+                <ul class="bullet-list">
+                    <li>Photo-verified parking zones</li>
+                    <li>Performance-based ride credits</li>
+                    <li>Accountability for repeated misuse</li>
+                </ul>
             </div>
 
             <div class="glass-card">
-                <i class="fa-solid fa-users-viewfinder"></i>
+                <div class="card-icon"><i class="fas fa-users"></i></div>
                 <h3>Campus Synergy</h3>
-                <p>Peer-to-peer influence. Student ambassadors lead the cultural shift across universities. </p>
+                <p>Using universities as ideal pilots. We build a culture of safety through peer-to-peer influence and ambassadors.</p>
+                <ul class="bullet-list">
+                    <li>Student ambassador programs</li>
+                    <li>Campus-wide safety challenges</li>
+                    <li>Localized pilot programs</li>
+                </ul>
             </div>
         </div>
     </section>
 
-    <section class="stats">
-        <h2 style="font-size: 2.5rem; margin-bottom: 40px;">Practical. Immediate. Lasting.</h2>
-        <p style="color: #94a3b8; max-width: 700px; margin: 0 auto;">Focused on changes that scooter companies and campuses can implement quickly, dropping complex policy reforms for immediate action.</p>
+    <section class="cta-banner">
+        <h2>Ready to Pilot?</h2>
+        <p style="opacity: 0.8; max-width: 600px; margin: 10px auto;">We focus on changes that can be implemented quickly, dropping complex policy for immediate action.</p>
+        <a href="mailto:escooter@safety.co.uk" class="cta-btn">Collaborate With Us</a>
+        <div style="margin-top: 30px; opacity: 0.6; font-size: 0.9rem;">escooter@safety.co.uk</div>
     </section>
 
     <footer>
-        <p style="margin-bottom: 20px;">saferiders@saferiders.com</p>
-        <p style="opacity: 0.4; font-size: 0.8rem;">Together, we keep cities moving – faster, greener, and above all, safer.</p>
+        <p>"Treat every ride as if the people around you were your friends and family."</p>
+        <p style="margin-top: 10px;">&copy; 2026 SafeRide Strategy • Faster. Greener. Safer.</p>
     </footer>
 
 </body>
